@@ -4,10 +4,11 @@ using Lab_E_Commerce_Website_API;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "7096";
 builder.WebHost.UseUrls($"http://*:{port}");
 
-var databaseURL = Environment.GetEnvironmentVariable("DATABASE_URL");
+var databaseURL = Environment.GetEnvironmentVariable("PGHOST");
+var databasePort = Environment.GetEnvironmentVariable("PGPORT");
 var databaseName = Environment.GetEnvironmentVariable("PGDATABASE");
 var databaseUser = Environment.GetEnvironmentVariable("PGUSER");
 var databasePassword = Environment.GetEnvironmentVariable("PGPASSWORD");
@@ -16,7 +17,7 @@ var databasePassword = Environment.GetEnvironmentVariable("PGPASSWORD");
 
 builder.Services.AddControllers();
 //                                                        UseNpgsql(builder.Configuration.GetConnectionString("PostgresqlDatabase"))
-builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseNpgsql("Host=" + databaseURL + ";Database=" + databaseName + ";Username=" + databaseUser + ";Password=" + databasePassword));
+builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseNpgsql("Host=" + databaseURL + databasePort + ";Database=" + databaseName + ";Username=" + databaseUser + ";Password=" + databasePassword));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
