@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabProjectECommerceWebsite\\Lab E-Commerce Website API\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj": {}
+    "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabBackend\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabProjectECommerceWebsite\\Lab E-Commerce Website API\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj": {
+    "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabBackend\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabProjectECommerceWebsite\\Lab E-Commerce Website API\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj",
+        "projectUniqueName": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabBackend\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj",
         "projectName": "Lab E-Commerce Website API",
-        "projectPath": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabProjectECommerceWebsite\\Lab E-Commerce Website API\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj",
+        "projectPath": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabBackend\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj",
         "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabProjectECommerceWebsite\\Lab E-Commerce Website API\\Lab E-Commerce Website API\\obj\\",
+        "outputPath": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabBackend\\Lab E-Commerce Website API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

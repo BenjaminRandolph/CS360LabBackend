@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jxfVKMBpUqw=",
+  "dgSpecHash": "QArEq9mQUXA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabProjectECommerceWebsite\\Lab E-Commerce Website API\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj",
+  "projectFilePath": "C:\\Users\\benja\\OneDrive\\Documents\\GitHub\\CS360LabBackend\\Lab E-Commerce Website API\\Lab E-Commerce Website API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\benja\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\benja\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

@@ -1,0 +1,7 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "./LabECommerceWebsiteAPI.dockerfile"
+
+[deploy]
+startCommand = "dotnet 'Lab E-Commerce Website API.dll'"
+restartPolicyType = "never"
