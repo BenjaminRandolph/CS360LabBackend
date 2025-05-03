@@ -4,8 +4,8 @@ using Lab_E_Commerce_Website_API;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
-builder.WebHost.UseUrls($"http://*:{port}");
+//var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
+//builder.WebHost.UseUrls($"http://bensfunnyapi:{port}");
 
 var databaseURL = Environment.GetEnvironmentVariable("PGHOST");
 var databasePort = Environment.GetEnvironmentVariable("PGPORT");
@@ -39,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
