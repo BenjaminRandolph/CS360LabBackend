@@ -27,14 +27,14 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ItemListing>>> GetItemListing()
         {
-            return await _context.ItemListings.ToListAsync();
+            return await _context.itemlistings.ToListAsync();
         }
 
         // GET: api/ItemListings/<any listing id>
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemListing>> GetItemListing(int id)
         {
-            var itemListing = await _context.ItemListings.FindAsync(id);
+            var itemListing = await _context.itemlistings.FindAsync(id);
 
             if (itemListing == null)
             {
@@ -80,7 +80,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<ItemListing>> PostItemListing(ItemListing itemListing)
         {
-            var matchResult = await _context.ItemListings.Where<ItemListing>(itemRow => itemRow.OwnerID == itemListing.OwnerID
+            var matchResult = await _context.itemlistings.Where<ItemListing>(itemRow => itemRow.OwnerID == itemListing.OwnerID
                                                                                         && itemRow.Price == itemListing.Price
                                                                                         && itemRow.Name == itemListing.Name
                                                                                         && itemRow.Description == itemListing.Description
@@ -90,7 +90,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
             {
                 itemListing.DateOfPosting = DateTime.UtcNow;
 
-                _context.ItemListings.Add(itemListing);
+                _context.itemlistings.Add(itemListing);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetItemListing", new { id = itemListing.ID }, itemListing);
@@ -103,13 +103,13 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItemListing(int id)
         {
-            var itemListing = await _context.ItemListings.FindAsync(id);
+            var itemListing = await _context.itemlistings.FindAsync(id);
             if (itemListing == null)
             {
                 return NotFound();
             }
 
-            _context.ItemListings.Remove(itemListing);
+            _context.itemlistings.Remove(itemListing);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -117,7 +117,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool ItemListingExists(int id)
         {
-            return _context.ItemListings.Any(e => e.ID == id);
+            return _context.itemlistings.Any(e => e.ID == id);
         }
     }
 }

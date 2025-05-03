@@ -25,14 +25,14 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transaction>>> Gettransactions()
         {
-            return await _context.Transactions.ToListAsync();
+            return await _context.transactions.ToListAsync();
         }
 
         // GET: api/Transactions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransaction(int id)
         {
-            var transaction = await _context.Transactions.FindAsync(id);
+            var transaction = await _context.transactions.FindAsync(id);
 
             if (transaction == null)
             {
@@ -78,7 +78,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)
         {
-            var matchResult = await _context.Transactions.Where<Transaction>(transactionRow => transactionRow.PosterID == transaction.PosterID
+            var matchResult = await _context.transactions.Where<Transaction>(transactionRow => transactionRow.PosterID == transaction.PosterID
                                                                                                && transactionRow.ProductName == transaction.ProductName
                                                                                                && transactionRow.ProductDescription == transaction.ProductDescription
                                                                                                && transactionRow.AmountPaid == transaction.AmountPaid
@@ -89,7 +89,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
             if (matchResult.Count == 0)
             {
-                _context.Transactions.Add(transaction);
+                _context.transactions.Add(transaction);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetTransaction", new { id = transaction.ID }, transaction);
@@ -102,13 +102,13 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTransaction(int id)
         {
-            var transaction = await _context.Transactions.FindAsync(id);
+            var transaction = await _context.transactions.FindAsync(id);
             if (transaction == null)
             {
                 return NotFound();
             }
 
-            _context.Transactions.Remove(transaction);
+            _context.transactions.Remove(transaction);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,7 +116,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool TransactionExists(int id)
         {
-            return _context.Transactions.Any(e => e.ID == id);
+            return _context.transactions.Any(e => e.ID == id);
         }
     }
 }

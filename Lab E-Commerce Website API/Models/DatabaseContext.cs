@@ -11,13 +11,13 @@ namespace Lab_E_Commerce_Website_API
 
         }
 
-        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<User> users { get; set; } = null!;
 
-        public DbSet<ItemListing> ItemListings { get; set; } = null!;
+        public DbSet<ItemListing> itemlistings { get; set; } = null!;
 
-        public DbSet<Transaction> Transactions { get; set; } = null!;
+        public DbSet<Transaction> transactions { get; set; } = null!;
 
-        public DbSet<Cart> Carts { get; set; } = null!;
+        public DbSet<Cart> carts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

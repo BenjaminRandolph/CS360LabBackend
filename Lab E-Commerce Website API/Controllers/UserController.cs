@@ -37,14 +37,14 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetuserAccounts()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.users.ToListAsync();
         }
 
         // GET: api/Users/<any existing user id>
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserAccount(int id)
         {
-            var userAccount = await _context.Users.FindAsync(id);
+            var userAccount = await _context.users.FindAsync(id);
 
             if (userAccount == null)
             {
@@ -58,7 +58,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet("LoginUser/{userName}/{password}")]
         public async Task<ActionResult<User>> LoginUserAccount(string userName, string password)
         {
-            var userAccount = await _context.Users.Where<User>(thing => (thing.UserName == userName)).ToListAsync();
+            var userAccount = await _context.users.Where<User>(thing => (thing.UserName == userName)).ToListAsync();
 
             bool ready = false;
             LoginInfo loginInfo = new LoginInfo();
@@ -127,7 +127,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         {
             userAccount.Password = passwordHasher.HashPassword(userAccount, userAccount.Password);
 
-            var matchResult = await _context.Users.Where<User>(userRow => userRow.UserName == userAccount.UserName
+            var matchResult = await _context.users.Where<User>(userRow => userRow.UserName == userAccount.UserName
                                                                           && userRow.Password == userAccount.Password
                                                                           && userRow.PhoneNumber == userAccount.PhoneNumber
                                                                           && userRow.Address == userAccount.Address
@@ -135,7 +135,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
             if (matchResult.Count == 0)
             {
-                _context.Users.Add(userAccount);
+                _context.users.Add(userAccount);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetUserAccount", new { id = userAccount.ID }, userAccount);
@@ -148,13 +148,13 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserAccount(int id)
         {
-            var userAccount = await _context.Users.FindAsync(id);
+            var userAccount = await _context.users.FindAsync(id);
             if (userAccount == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(userAccount);
+            _context.users.Remove(userAccount);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -162,7 +162,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool UserAccountExists(int id)
         {
-            return _context.Users.Any(e => e.ID == id);
+            return _context.users.Any(e => e.ID == id);
         }
     }
 }

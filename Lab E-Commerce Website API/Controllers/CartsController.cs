@@ -25,14 +25,14 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> Getcarts()
         {
-            return await _context.Carts.ToListAsync();
+            return await _context.carts.ToListAsync();
         }
 
         // GET: api/Carts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Cart>> GetCartRow(int id)
         {
-            var cart = await _context.Carts.FindAsync(id);
+            var cart = await _context.carts.FindAsync(id);
 
             if (cart == null)
             {
@@ -46,7 +46,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet("CartLookup/{id}")]
         public async Task<ActionResult<List<ItemListing>>> GetCartOfUser(int id)
         {
-            var carts = await _context.Carts.Where<Cart>(cart => cart.UserID == id).ToListAsync<Cart>();
+            var carts = await _context.carts.Where<Cart>(cart => cart.UserID == id).ToListAsync<Cart>();
 
             List<ItemListing> items = new List<ItemListing>();
             List<int> previousCheckedListings = new List<int>();
@@ -56,7 +56,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
                 if (!previousCheckedListings.Contains(cart.ListingID))
                 {
                     previousCheckedListings.Add(cart.ListingID);
-                    var item = await _context.ItemListings.FindAsync(cart.ListingID);
+                    var item = await _context.itemlistings.FindAsync(cart.ListingID);
                     if (item != null)
                     {
                         items.Add(item);
@@ -111,11 +111,11 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Cart>> PostCart(Cart cart)
         {
-            var matchResult = await _context.Carts.Where<Cart>(cartRow => cartRow.UserID == cart.UserID && cartRow.ListingID == cart.ListingID).ToListAsync<Cart>();
+            var matchResult = await _context.carts.Where<Cart>(cartRow => cartRow.UserID == cart.UserID && cartRow.ListingID == cart.ListingID).ToListAsync<Cart>();
 
             if (matchResult.Count == 0)
             {
-                _context.Carts.Add(cart);
+                _context.carts.Add(cart);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetCartRow", new { id = cart.ID }, cart);
@@ -128,13 +128,13 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCart(int id)
         {
-            var cart = await _context.Carts.FindAsync(id);
+            var cart = await _context.carts.FindAsync(id);
             if (cart == null)
             {
                 return NotFound();
             }
 
-            _context.Carts.Remove(cart);
+            _context.carts.Remove(cart);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -142,7 +142,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool CartExists(int id)
         {
-            return _context.Carts.Any(e => e.ID == id);
+            return _context.carts.Any(e => e.ID == id);
         }
     }
 }
