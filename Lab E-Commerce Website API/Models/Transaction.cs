@@ -12,7 +12,7 @@
 
         public string? productdescription { get; set; }
 
-        public double amountpaid { get; set; }
+        public decimal amountpaid { get; set; }
 
         public int amountofproduct { get; set; }
 

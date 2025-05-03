@@ -16,7 +16,7 @@ namespace Lab_E_Commerce_Website_API.Models
 
         public string? email { get; set; }
 
-        public double funds { get; set; }
+        public decimal funds { get; set; }
 
         public bool adminpermission { get; set; }
     }
