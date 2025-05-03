@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 //var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
 //builder.WebHost.UseUrls($"http://bensfunnyapi:{port}");
 
-var databaseURL = Environment.GetEnvironmentVariable("PGHOST");
-var databasePort = Environment.GetEnvironmentVariable("PGPORT");
-var databaseName = Environment.GetEnvironmentVariable("PGDATABASE");
-var databaseUser = Environment.GetEnvironmentVariable("PGUSER");
-var databasePassword = Environment.GetEnvironmentVariable("PGPASSWORD");
+var databaseURL = Environment.GetEnvironmentVariable("PGHOST") ?? "localhost";
+var databasePort = Environment.GetEnvironmentVariable("PGPORT") ?? ":6000";
+var databaseName = Environment.GetEnvironmentVariable("PGDATABASE") ?? "ECommerceLab";
+var databaseUser = Environment.GetEnvironmentVariable("PGUSER") ?? "postgres";
+var databasePassword = Environment.GetEnvironmentVariable("PGPASSWORD") ?? "P@ssw0rd!";
 
 // Add services to the container.
 
