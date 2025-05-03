@@ -4,20 +4,20 @@ namespace Lab_E_Commerce_Website_API.Models
     // This is how we access user accounts in the database for account permissions and data
     public class User
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
-        public string? UserName { get; set; }
+        public string? username { get; set; }
 
-        public string? Password { get; set; }
+        public string? password { get; set; }
 
-        public string? PhoneNumber { get; set; }
+        public string? phonenumber { get; set; }
 
-        public string? Address { get; set; }
+        public string? address { get; set; }
 
-        public string? Email { get; set; }
+        public string? email { get; set; }
 
-        public double Funds { get; set; }
+        public double funds { get; set; }
 
-        public bool AdminPermission { get; set; }
+        public bool adminpermission { get; set; }
     }
 }

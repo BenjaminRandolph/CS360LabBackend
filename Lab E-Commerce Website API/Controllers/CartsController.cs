@@ -46,17 +46,17 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet("CartLookup/{id}")]
         public async Task<ActionResult<List<ItemListing>>> GetCartOfUser(int id)
         {
-            var carts = await _context.carts.Where<Cart>(cart => cart.UserID == id).ToListAsync<Cart>();
+            var carts = await _context.carts.Where<Cart>(cart => cart.userid == id).ToListAsync<Cart>();
 
             List<ItemListing> items = new List<ItemListing>();
             List<int> previousCheckedListings = new List<int>();
 
             foreach (var cart in carts)
             {
-                if (!previousCheckedListings.Contains(cart.ListingID))
+                if (!previousCheckedListings.Contains(cart.listingid))
                 {
-                    previousCheckedListings.Add(cart.ListingID);
-                    var item = await _context.itemlistings.FindAsync(cart.ListingID);
+                    previousCheckedListings.Add(cart.listingid);
+                    var item = await _context.itemlistings.FindAsync(cart.listingid);
                     if (item != null)
                     {
                         items.Add(item);
@@ -80,7 +80,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCart(int id, Cart cart)
         {
-            if (id != cart.ID)
+            if (id != cart.id)
             {
                 return BadRequest();
             }
@@ -111,14 +111,14 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Cart>> PostCart(Cart cart)
         {
-            var matchResult = await _context.carts.Where<Cart>(cartRow => cartRow.UserID == cart.UserID && cartRow.ListingID == cart.ListingID).ToListAsync<Cart>();
+            var matchResult = await _context.carts.Where<Cart>(cartRow => cartRow.userid == cart.userid && cartRow.listingid == cart.listingid).ToListAsync<Cart>();
 
             if (matchResult.Count == 0)
             {
                 _context.carts.Add(cart);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetCartRow", new { id = cart.ID }, cart);
+                return CreatedAtAction("GetCartRow", new { id = cart.id }, cart);
             }
             
             return BadRequest();
@@ -142,7 +142,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool CartExists(int id)
         {
-            return _context.carts.Any(e => e.ID == id);
+            return _context.carts.Any(e => e.id == id);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItemListing(int id, ItemListing itemListing)
         {
-            if (id != itemListing.ID)
+            if (id != itemListing.id)
             {
                 return BadRequest();
             }
@@ -80,20 +80,20 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<ItemListing>> PostItemListing(ItemListing itemListing)
         {
-            var matchResult = await _context.itemlistings.Where<ItemListing>(itemRow => itemRow.OwnerID == itemListing.OwnerID
-                                                                                        && itemRow.Price == itemListing.Price
-                                                                                        && itemRow.Name == itemListing.Name
-                                                                                        && itemRow.Description == itemListing.Description
-                                                                                        && itemRow.Category == itemListing.Category).ToListAsync<ItemListing>();
+            var matchResult = await _context.itemlistings.Where<ItemListing>(itemRow => itemRow.ownerid == itemListing.ownerid
+                                                                                        && itemRow.price == itemListing.price
+                                                                                        && itemRow.name == itemListing.name
+                                                                                        && itemRow.description == itemListing.description
+                                                                                        && itemRow.category == itemListing.category).ToListAsync<ItemListing>();
 
             if (matchResult.Count == 0)
             {
-                itemListing.DateOfPosting = DateTime.UtcNow;
+                itemListing.dateofposting = DateTime.UtcNow;
 
                 _context.itemlistings.Add(itemListing);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetItemListing", new { id = itemListing.ID }, itemListing);
+                return CreatedAtAction("GetItemListing", new { id = itemListing.id }, itemListing);
             }
 
             return BadRequest();
@@ -117,7 +117,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool ItemListingExists(int id)
         {
-            return _context.itemlistings.Any(e => e.ID == id);
+            return _context.itemlistings.Any(e => e.id == id);
         }
     }
 }

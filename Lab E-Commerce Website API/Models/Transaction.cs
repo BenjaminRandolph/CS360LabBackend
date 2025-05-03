@@ -4,24 +4,24 @@
     // This is how we access the data in the database about the items currently listed or previously listed on the website
     public class Transaction
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
-        public int PosterID { get; set; }
+        public int posterid { get; set; }
 
-        public string? ProductName { get; set; }
+        public string? productname { get; set; }
 
-        public string? ProductDescription { get; set; }
+        public string? productdescription { get; set; }
 
-        public double AmountPaid { get; set; }
+        public double amountpaid { get; set; }
 
-        public int AmountOfProduct { get; set; }
+        public int amountofproduct { get; set; }
 
-        public string? Category { get; set; }
+        public string? category { get; set; }
 
-        public int PurchaserID { get; set; }
+        public int purchaserid { get; set; }
 
-        public DateTime DateOfPurchase { get; set; }
+        public DateTime dateofpurchase { get; set; }
 
-        public DateTime DateOfPosting { get; set; }
+        public DateTime dateofposting { get; set; }
     }
 }

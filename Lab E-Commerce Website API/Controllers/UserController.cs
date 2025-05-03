@@ -58,7 +58,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpGet("LoginUser/{userName}/{password}")]
         public async Task<ActionResult<User>> LoginUserAccount(string userName, string password)
         {
-            var userAccount = await _context.users.Where<User>(thing => (thing.UserName == userName)).ToListAsync();
+            var userAccount = await _context.users.Where<User>(thing => (thing.username == userName)).ToListAsync();
 
             bool ready = false;
             LoginInfo loginInfo = new LoginInfo();
@@ -68,11 +68,11 @@ namespace Lab_E_Commerce_Website_API.Controllers
             {
                 foreach (var user in userAccount)
                 {
-                    result = passwordHasher.VerifyHashedPassword(user, user.Password, password);
-                    if (user.UserName != "" && user.UserName != null && user.Password != "" && user.Password != null && result == PasswordVerificationResult.Success)
+                    result = passwordHasher.VerifyHashedPassword(user, user.password, password);
+                    if (user.username != "" && user.username != null && user.password != "" && user.password != null && result == PasswordVerificationResult.Success)
                     {
-                        loginInfo.admin = user.AdminPermission;
-                        loginInfo.id = user.ID;
+                        loginInfo.admin = user.adminpermission;
+                        loginInfo.id = user.id;
                         ready = true;
                         break;
                     }
@@ -94,7 +94,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserAccount(int id, User userAccount)
         {
-            if (id != userAccount.ID)
+            if (id != userAccount.id)
             {
                 return BadRequest();
             }
@@ -125,20 +125,20 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUserAccount(User userAccount)
         {
-            userAccount.Password = passwordHasher.HashPassword(userAccount, userAccount.Password);
+            userAccount.password = passwordHasher.HashPassword(userAccount, userAccount.password);
 
-            var matchResult = await _context.users.Where<User>(userRow => userRow.UserName == userAccount.UserName
-                                                                          && userRow.Password == userAccount.Password
-                                                                          && userRow.PhoneNumber == userAccount.PhoneNumber
-                                                                          && userRow.Address == userAccount.Address
-                                                                          && userRow.Email == userAccount.Email).ToListAsync<User>();
+            var matchResult = await _context.users.Where<User>(userRow => userRow.username == userAccount.username
+                                                                          && userRow.password == userAccount.password
+                                                                          && userRow.phonenumber == userAccount.phonenumber
+                                                                          && userRow.address == userAccount.address
+                                                                          && userRow.email == userAccount.email).ToListAsync<User>();
 
             if (matchResult.Count == 0)
             {
                 _context.users.Add(userAccount);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetUserAccount", new { id = userAccount.ID }, userAccount);
+                return CreatedAtAction("GetUserAccount", new { id = userAccount.id }, userAccount);
             }
 
             return BadRequest();
@@ -162,7 +162,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool UserAccountExists(int id)
         {
-            return _context.users.Any(e => e.ID == id);
+            return _context.users.Any(e => e.id == id);
         }
     }
 }

@@ -21,10 +21,10 @@ namespace Lab_E_Commerce_Website_API
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasKey(x => x.ID);
-            modelBuilder.Entity<ItemListing>().HasKey(x => x.ID);
-            modelBuilder.Entity<Transaction>().HasKey(x => x.ID);
-            modelBuilder.Entity<Cart>().HasKey(x => x.ID);
+            modelBuilder.Entity<User>().HasKey(x => x.id);
+            modelBuilder.Entity<ItemListing>().HasKey(x => x.id);
+            modelBuilder.Entity<Transaction>().HasKey(x => x.id);
+            modelBuilder.Entity<Cart>().HasKey(x => x.id);
             base.OnModelCreating(modelBuilder);
         }
     }

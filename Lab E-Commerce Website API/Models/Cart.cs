@@ -2,10 +2,10 @@
 {
     public class Cart
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
-        public int UserID { get; set; }
+        public int userid { get; set; }
 
-        public int ListingID { get; set; }
+        public int listingid { get; set; }
     }
 }

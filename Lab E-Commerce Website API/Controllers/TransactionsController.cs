@@ -47,7 +47,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTransaction(int id, Transaction transaction)
         {
-            if (id != transaction.ID)
+            if (id != transaction.id)
             {
                 return BadRequest();
             }
@@ -78,21 +78,21 @@ namespace Lab_E_Commerce_Website_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)
         {
-            var matchResult = await _context.transactions.Where<Transaction>(transactionRow => transactionRow.PosterID == transaction.PosterID
-                                                                                               && transactionRow.ProductName == transaction.ProductName
-                                                                                               && transactionRow.ProductDescription == transaction.ProductDescription
-                                                                                               && transactionRow.AmountPaid == transaction.AmountPaid
-                                                                                               && transactionRow.AmountOfProduct == transaction.AmountOfProduct
-                                                                                               && transactionRow.Category == transaction.Category
-                                                                                               && transactionRow.PurchaserID == transaction.PurchaserID
-                                                                                               && transactionRow.DateOfPurchase == transaction.DateOfPurchase).ToListAsync<Transaction>();
+            var matchResult = await _context.transactions.Where<Transaction>(transactionRow => transactionRow.posterid == transaction.posterid
+                                                                                               && transactionRow.productname == transaction.productname
+                                                                                               && transactionRow.productdescription == transaction.productdescription
+                                                                                               && transactionRow.amountpaid == transaction.amountpaid
+                                                                                               && transactionRow.amountofproduct == transaction.amountofproduct
+                                                                                               && transactionRow.category == transaction.category
+                                                                                               && transactionRow.purchaserid == transaction.purchaserid
+                                                                                               && transactionRow.dateofpurchase == transaction.dateofpurchase).ToListAsync<Transaction>();
 
             if (matchResult.Count == 0)
             {
                 _context.transactions.Add(transaction);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetTransaction", new { id = transaction.ID }, transaction);
+                return CreatedAtAction("GetTransaction", new { id = transaction.id }, transaction);
             }
 
             return BadRequest();
@@ -116,7 +116,7 @@ namespace Lab_E_Commerce_Website_API.Controllers
 
         private bool TransactionExists(int id)
         {
-            return _context.transactions.Any(e => e.ID == id);
+            return _context.transactions.Any(e => e.id == id);
         }
     }
 }

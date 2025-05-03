@@ -4,18 +4,18 @@
     // This is how we access the data in the database about the items currently listed or previously listed on the website
     public class ItemListing
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
-        public int OwnerID { get; set; }
+        public int ownerid { get; set; }
 
-        public string? Name { get; set; }
+        public string? name { get; set; }
 
-        public string? Description { get; set; }
+        public string? description { get; set; }
 
-        public double Price { get; set; }
+        public double price { get; set; }
 
-        public string? Category { get; set; }
+        public string? category { get; set; }
 
-        public DateTime DateOfPosting { get; set; }
+        public DateTime dateofposting { get; set; }
     }
 }
