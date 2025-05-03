@@ -17,7 +17,7 @@ var databasePassword = Environment.GetEnvironmentVariable("PGPASSWORD") ?? "P@ss
 
 builder.Services.AddControllers();
 //                                                        UseNpgsql(builder.Configuration.GetConnectionString("PostgresqlDatabase"))
-builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseNpgsql("Host=" + databaseURL + databasePort + ";Database=" + databaseName + ";Username=" + databaseUser + ";Password=" + databasePassword));
+builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseNpgsql("Host=" + databaseURL + ";Database=" + databaseName + ";Username=" + databaseUser + ";Password=" + databasePassword));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
